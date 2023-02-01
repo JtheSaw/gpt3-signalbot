@@ -1,6 +1,7 @@
 import argparse
 import logging
 import threading
+import os
 
 from pysignalclirestapi import SignalCliRestApi
 from signalbot import Message, SignalBot
@@ -22,13 +23,15 @@ parser.add_argument(
     "--service",
     type=str,
     help="IP adress of your local signal service",
-    required=True,
+    required=False,
+    default=os.environ.get("SERVICE"),
 )
 parser.add_argument(
     "--phone_number",
     type=str,
     help="Your phone number",
-    required=True,
+    required=False,
+    default=os.environ.get("PHONE_NUMBER"),
 )
 parser.add_argument(
     "--groups",
@@ -36,6 +39,7 @@ parser.add_argument(
     nargs="+",
     help="Names of groups you want the bot to reply to. If none are iven, the bot will replly to all messages",
     required=False,
+    default=os.environ.get("GROUPS"),
 )
 
 
