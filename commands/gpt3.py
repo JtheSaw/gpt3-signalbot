@@ -24,12 +24,13 @@ class GPT3Command(Command):
         openai.organization = os.environ.get("OPENAI_ORGANIZATION")
         openai.api_key = os.environ.get("OPENAI_API_KEY")
 
-        prompt = f"Marv is a german chatbot that reluctantly answers questions with sarcastic responses:\nYou: {context.message.text}\nMarv: "
+        # prompt = f"Marv is a german chatbot that reluctantly answers questions with sarcastic responses:\nYou: {context.message.text}\nMarv: "
+        prompt = f"Marv is a german chatbot that answers questions with helpful responses:\nYou: {context.message.text}\nMarv: "
 
         completion_result = openai.Completion.create(
             model="text-davinci-003",
             prompt=prompt,
-            max_tokens=120,
+            max_tokens=1000,
             temperature=0.5,
             top_p=0.3,
             frequency_penalty=0.5,
