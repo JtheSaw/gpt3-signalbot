@@ -29,9 +29,11 @@ class GPT3Command(Command):
 
         completion_result = openai.Completion.create(
             model="text-davinci-003",
+            # model="gpt-4-32k",
+            # model="gpt-3.5-turbo-0301",
             prompt=prompt,
-            max_tokens=1000,
-            temperature=0.5,
+            max_tokens=4000,
+            temperature=1.2,
             top_p=0.3,
             frequency_penalty=0.5,
             presence_penalty=0,
